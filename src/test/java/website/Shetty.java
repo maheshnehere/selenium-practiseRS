@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -45,6 +46,10 @@ public class Shetty {
         driver.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[1]/span[2]/label")).click();
 
         driver.findElement(By.xpath("//button[@class='submit signInBtn']")).click();
+        driver.findElement(By.xpath("//p[.='You are successfully logged in.']")).getText();
+        Assert.assertEquals(driver.findElement(By.xpath("//p[.='You are successfully logged in.']")).getText(),"You are successfully logged in.");
+        driver.findElement(By.xpath("//button[contains(text(),'Log Out')]")).click();
+        driver.close();
 
 
     }
